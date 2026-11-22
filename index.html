@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARBEXEC — The No Surprises Act IDR Packet Engine</title>
+<meta name="description" content="ARBEXEC prepares federal Independent Dispute Resolution (IDR) cases under the No Surprises Act for hospitals and practices: EHR-connected intake, a cited eligibility screen for every case, filing-ready packets, and handoff to a certified IDR entity.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+<div class="pilot-strip" data-i18n="strip"><strong>In pilot.</strong> ARBEXEC is onboarding a small number of provider organizations now.</div>
+
+<nav class="nav" aria-label="Page sections">
+  <a class="nav-brand" href="index.html" aria-label="ARBEXEC home"><img src="assets/logo.webp" alt="ARBEXEC"></a>
+  <div class="nav-links">
+    <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+    <a href="#why" data-i18n="nav.why">Why ARBEXEC</a>
+    <a href="#pilot" data-i18n="nav.pilot">Pilot</a>
+    <a href="rules.html" data-i18n="nav.rules">The rulebook</a>
+    <a href="for-providers.html" data-i18n="nav.providers">For providers</a>
+    <a href="#nda" data-i18n="nav.demo">Demo</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+    <span class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </span>
+  </div>
+</nav>
+
+<main id="main">
+
+<section class="wrap hero" aria-labelledby="hero-title">
+  <div>
+    <p class="kicker" data-i18n="hero.kicker">The case-preparation platform for federal IDR</p>
+    <h1 id="hero-title" data-i18n="hero.h1">From remittance to resolution.</h1>
+    <p class="expansion" data-i18n="hero.expansion">ARBEXEC — the packet engine for Independent Dispute Resolution under the No Surprises Act (45 CFR 149.510).</p>
+    <p class="sub" data-i18n="hero.sub">ARBEXEC prepares federal IDR cases for hospitals and practices with out-of-network payment disputes: it takes in your claims, screens every one against the federal rules, assembles the filing packet, and hands it to a certified IDR entity for filing.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#nda" data-i18n="cta.demo">Request a demonstration</a>
+      <a class="btn btn-ghost" href="#workflow" data-i18n="cta.workflow">Explore the workflow</a>
+    </div>
+    <ul class="chips">
+      <li data-i18n="chip.1">Every eligible case — no cherry-picking</li>
+      <li data-i18n="chip.2">Every verdict cites its rule</li>
+      <li data-i18n="chip.3">Your data stays in your environment</li>
+    </ul>
+  </div>
+
+  <div class="panel" aria-label="Illustrative case view">
+    <div class="panel-head">
+      <span class="t" data-i18n="panel.t">Case view</span>
+      <span class="badge" data-i18n="panel.badge">Illustrative</span>
+    </div>
+    <dl>
+      <div class="row">
+        <dt data-i18n="panel.intake">Intake</dt>
+        <dd data-i18n="panel.intake.v">Four lanes in — EHR pull · 835/837 · PDF · paper</dd>
+      </div>
+      <div class="row">
+        <dt data-i18n="panel.elig">Eligibility</dt>
+        <dd><span class="verdict" data-i18n="panel.elig.v">ELIGIBLE</span> <span data-i18n="panel.elig.r">— Rule R4, network dispute</span> <span class="cite">45 CFR 149.510(a)</span></dd>
+      </div>
+      <div class="row">
+        <dt data-i18n="panel.neg">Open negotiation</dt>
+        <dd><span data-i18n="panel.neg.v">Day 12 of 30 business days</span> <span class="cite">45 CFR 149.510(b)(1)</span></dd>
+      </div>
+      <div class="row">
+        <dt data-i18n="panel.packet">Packet</dt>
+        <dd data-i18n="panel.packet.v">Evidence packet assembled · manifest hash-verified</dd>
+      </div>
+      <div class="row">
+        <dt data-i18n="panel.handoff">Handoff</dt>
+        <dd data-i18n="panel.handoff.v">With the certified IDR entity — the filing is theirs</dd>
+      </div>
+      <div class="row">
+        <dt data-i18n="panel.outcome">Outcome</dt>
+        <dd data-i18n="panel.outcome.v">Tracked through decision to payment</dd>
+      </div>
+    </dl>
+    <p class="caption" data-i18n="panel.caption">Illustrative case view with synthetic data. No real claims appear on this site.</p>
+  </div>
+</section>
+
+<section class="wrap section statement" id="overview">
+  <h2 data-i18n="ov.h2">Most eligible disputes are never filed.</h2>
+  <p data-i18n="ov.p">The federal windows are short, the paperwork is exact, and preparing a case by hand is slow — so eligible out-of-network disputes get skipped, and the money the No Surprises Act already provides for is left on the table. ARBEXEC closes that gap: the preparation is the product.</p>
+</section>
+
+<section class="workflow section" id="workflow">
+  <div class="inner">
+    <p class="eyebrow" data-i18n="wf.eyebrow">Workflow</p>
+    <h2 data-i18n="wf.h2">From remittance chaos to a filing-ready packet.</h2>
+    <p class="lede" data-i18n="wf.lede">Six stages, one pipeline. Every case moves through the same guarded path — and a case can only move forward when the stage before it is complete.</p>
+    <div class="grid cols-3">
+      <div class="card">
+        <span class="step" data-i18n="wf.s1.k">Step 1 · Intake</span>
+        <h3 data-i18n="wf.s1.h">Four lanes in</h3>
+        <p data-i18n="wf.s1.p">EHR-connected pull, electronic 835/837 files, PDF documents, and paper — scanned and read locally, on your own machines, never sent out for scanning.</p>
+      </div>
+      <div class="card">
+        <span class="step" data-i18n="wf.s2.k">Step 2 · Eligibility</span>
+        <h3 data-i18n="wf.s2.h">A cited screen, every claim</h3>
+        <p><span data-i18n="wf.s2.p">Every claim is screened rule by rule. Each verdict — eligible, ineligible, or needs review — carries the rule and the citation behind it. A missing qualifying payment amount is flagged for review, never estimated.</span> <span class="cite">45 CFR 149.510</span></p>
+      </div>
+      <div class="card">
+        <span class="step" data-i18n="wf.s3.k">Step 3 · Negotiation</span>
+        <h3 data-i18n="wf.s3.h">Open negotiation, tracked</h3>
+        <p><span data-i18n="wf.s3.p">The 30-business-day open negotiation window runs from the initial payment or denial, with the deadline always visible and a breach flagged the day it happens.</span> <span class="cite">45 CFR 149.510(b)(1)</span></p>
+      </div>
+      <div class="card">
+        <span class="step" data-i18n="wf.s4.k">Step 4 · Packet</span>
+        <h3 data-i18n="wf.s4.h">Packet assembly</h3>
+        <p data-i18n="wf.s4.p">The filing packet is assembled as an evidence document with a hash-verified manifest — what was handed off can be proven later, byte for byte.</p>
+      </div>
+      <div class="card">
+        <span class="step" data-i18n="wf.s5.k">Step 5 · Handoff</span>
+        <h3 data-i18n="wf.s5.h">Certified-filer handoff</h3>
+        <p data-i18n="wf.s5.p">ARBEXEC prepares; a certified IDR entity files. The handoff is a first-class, tracked step — not an email attachment and a hope.</p>
+      </div>
+      <div class="card">
+        <span class="step" data-i18n="wf.s6.k">Step 6 · Outcome</span>
+        <h3 data-i18n="wf.s6.h">Outcome &amp; payment tracking</h3>
+        <p data-i18n="wf.s6.p">Decisions, payment deadlines, and enforcement flags are tracked to closure. A breached deadline surfaces — it never silently rolls forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="why">
+  <p class="eyebrow" data-i18n="why.eyebrow">Why ARBEXEC</p>
+  <h2 data-i18n="why.h2">Why this works</h2>
+  <p class="lede" data-i18n="why.lede">IDR preparation fails in predictable places: cases get cherry-picked, deadlines slip quietly, figures get guessed. ARBEXEC is built against exactly those failures.</p>
+  <div class="grid cols-2">
+    <div class="card">
+      <h3 data-i18n="why.c1.h">No cherry-picking</h3>
+      <p data-i18n="why.c1.p">Every claim that comes in is screened, and every eligible case moves forward. The engine does not pick winners — the rules decide, and the verdict is written down with its citation.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="why.c2.h">Cited, not guessed</h3>
+      <p data-i18n="why.c2.p">Each eligibility verdict carries its rule ID and its CFR citation. Billed, paid, and qualifying payment amounts come from your remittances — a figure that is absent is flagged for review, never invented.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="why.c3.h">Deadlines are load-bearing</h3>
+      <p data-i18n="why.c3.p">A federal-holiday-aware business-day calendar drives every window — open negotiation, IDR initiation, cooling-off. Breached and near-deadline cases surface first, breached first.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="why.c4.h">Your data stays in your environment</h3>
+      <p data-i18n="why.c4.p">Identified claims data lives in the operator's own environment, encrypted at rest. Scanning and OCR run locally. The ARBEXEC application sits behind an access gate — it is never a public system.</p>
+    </div>
+  </div>
+  <div class="wide-strip">
+    <h3 data-i18n="why.strip.h">Human-verified figures</h3>
+    <p data-i18n="why.strip.p">Extraction proposes; people dispose. Billed, paid, and qualifying payment amounts are verified by a human reviewer before any packet is finalized — the machine never gets the last word on a number that goes to a filer.</p>
+  </div>
+</section>
+
+<section class="wrap section" id="pilot">
+  <p class="eyebrow" data-i18n="pilot.eyebrow">Pilot</p>
+  <h2 data-i18n="pilot.h2">In pilot. Built for proof.</h2>
+  <p class="lede" data-i18n="pilot.p">ARBEXEC is in pilot with provider organizations. The full pipeline — intake, eligibility, open negotiation, packet, handoff, outcome tracking — is built and tested end to end. EHR-direct intake is enabled per organization during onboarding, alongside the electronic, PDF, and paper lanes.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#contact" data-i18n="pilot.cta">Ask about the pilot</a>
+  </div>
+</section>
+
+<section class="wrap section" id="founder">
+  <p class="eyebrow" data-i18n="founder.eyebrow">IEC</p>
+  <h2 data-i18n="founder.h2">The team behind ARBEXEC.</h2>
+  <p class="lede" data-i18n="founder.p">ARBEXEC is built by International Empire Consultants, Inc. (IEC) — the team behind MEDEXEC and CURAVIA. IEC builds operating systems for healthcare work that has to be right: cited, auditable, and human-checked.</p>
+  <div class="cta-row">
+    <a class="btn btn-ghost" href="https://iecincglobal.com" data-i18n="founder.cta">Visit IEC</a>
+  </div>
+</section>
+
+<section class="wrap section faq" id="faq">
+  <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
+  <h2 data-i18n="faq.h2">Clear answers about ARBEXEC.</h2>
+  <details>
+    <summary data-i18n="faq.q1">Does ARBEXEC file our cases?</summary>
+    <p data-i18n="faq.a1">No. ARBEXEC prepares filing-ready packets and tracks each case end to end; the filing itself is performed by a certified IDR entity. That separation is by design — the preparer and the filer are different parties.</p>
+  </details>
+  <details>
+    <summary data-i18n="faq.q2">Which disputes does the federal IDR process cover?</summary>
+    <p data-i18n="faq.a2">Out-of-network emergency services, non-emergency services by an out-of-network provider at an in-network facility, and air ambulance services, under 45 CFR 149.510. Where a specified state law applies, the state process governs instead — the ARBEXEC screen checks that first.</p>
+  </details>
+  <details>
+    <summary data-i18n="faq.q3">Do all of our cases get screened, or only the strong ones?</summary>
+    <p data-i18n="faq.a3">All of them. ARBEXEC screens every claim it takes in and moves every eligible case forward. Cases are never cherry-picked, and a case that needs review is flagged with the reason — never quietly dropped.</p>
+  </details>
+  <details>
+    <summary data-i18n="faq.q4">Where does our claims data go?</summary>
+    <p data-i18n="faq.a4">Nowhere it shouldn't. Identified claims data stays inside your own environment, scanning and OCR run locally on your machines, and the ARBEXEC operator system sits behind an access gate — it is never a public site.</p>
+  </details>
+  <details>
+    <summary data-i18n="faq.q5">How do we see ARBEXEC?</summary>
+    <p data-i18n="faq.a5">Sign the IEC CNDA — one agreement covers every IEC product — and IEC arranges a guided walkthrough. There is no public demo and no demo login.</p>
+  </details>
+</section>
+
+<section class="wrap section" id="nda">
+  <div class="nda-panel">
+    <h2 data-i18n="nda.h2">IEC signs one universal NDA.</h2>
+    <p data-i18n="nda.p">One IEC CNDA covers every IEC product, ARBEXEC included. Review it, sign it, and IEC will arrange your guided walkthrough of ARBEXEC and a pilot conversation for your organization.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://iecincglobal.com/cnda.html" data-i18n="nda.btn">Review and sign the IEC CNDA</a>
+    </div>
+    <p><span data-i18n="nda.alt">Questions first?</span> <a class="alt" href="#contact" data-i18n="nda.alt.link">Contact IEC</a></p>
+  </div>
+</section>
+
+<section class="wrap section" id="contact">
+  <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+  <h2 data-i18n="contact.h2">Talk to IEC.</h2>
+  <p class="lede" data-i18n="contact.lede">ARBEXEC is offered to hospitals and provider practices. Tell us your dispute volume and the systems your claims live in, and we will come back with next steps.</p>
+  <div class="contact-grid">
+    <div class="card">
+      <h3 data-i18n="contact.email.h">Email</h3>
+      <p><a href="mailto:info@iecincglobal.com">info@iecincglobal.com</a></p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="contact.phone.h">Phone</h3>
+      <p><a href="tel:+18578671767">(857) 867-1767</a></p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="contact.web.h">IEC</h3>
+      <p><a href="https://iecincglobal.com/contact.html" data-i18n="contact.web.link">IEC contact page</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <img src="assets/logo.webp" alt="ARBEXEC">
+    <p data-i18n="footer.tag">ARBEXEC prepares federal IDR cases under the No Surprises Act. Filing is performed by a certified IDR entity.</p>
+    <p data-i18n="footer.rights">© 2026 International Empire Consultants, Inc. ARBEXEC is an IEC, Inc. product.</p>
+    <div class="links">
+      <a href="index.html" data-i18n="footer.home">Home</a>
+      <a href="rules.html" data-i18n="nav.rules">The rulebook</a>
+      <a href="for-providers.html" data-i18n="nav.providers">For providers</a>
+      <a href="https://iecincglobal.com">IEC</a>
+      <a href="https://getmedexec.com">MEDEXEC</a>
+      <a href="https://www.getcuravia.com">CURAVIA</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.PAGE_I18N = {
+  es: {
+    "title": "ARBEXEC — El motor de paquetes IDR de la Ley Sin Sorpresas",
+    "hero.kicker": "La plataforma de preparación de casos para el IDR federal",
+    "hero.h1": "De la remesa a la resolución.",
+    "hero.expansion": "ARBEXEC — el motor de paquetes para la Resolución Independiente de Disputas (IDR) bajo la Ley Sin Sorpresas (45 CFR 149.510).",
+    "hero.sub": "ARBEXEC prepara casos federales de IDR para hospitales y prácticas con disputas de pago fuera de la red: recibe sus reclamaciones, examina cada una contra las reglas federales, arma el paquete de presentación y lo entrega a una entidad IDR certificada para su presentación.",
+    "chip.1": "Cada caso elegible — sin selección de favoritos",
+    "chip.2": "Cada veredicto cita su regla",
+    "chip.3": "Sus datos permanecen en su entorno",
+    "panel.t": "Vista del caso",
+    "panel.badge": "Ilustrativo",
+    "panel.intake": "Admisión",
+    "panel.intake.v": "Cuatro vías de entrada — EHR · 835/837 · PDF · papel",
+    "panel.elig": "Elegibilidad",
+    "panel.elig.v": "ELEGIBLE",
+    "panel.elig.r": "— Regla R4, disputa de red",
+    "panel.neg": "Negociación abierta",
+    "panel.neg.v": "Día 12 de 30 días hábiles",
+    "panel.packet": "Paquete",
+    "panel.packet.v": "Paquete de evidencia armado · manifiesto verificado por hash",
+    "panel.handoff": "Entrega",
+    "panel.handoff.v": "Con la entidad IDR certificada — la presentación es suya",
+    "panel.outcome": "Resultado",
+    "panel.outcome.v": "Seguimiento desde la decisión hasta el pago",
+    "panel.caption": "Vista de caso ilustrativa con datos sintéticos. En este sitio no aparece ninguna reclamación real.",
+    "ov.h2": "La mayoría de las disputas elegibles nunca se presentan.",
+    "ov.p": "Los plazos federales son cortos, el papeleo es exacto y preparar un caso a mano es lento — así que las disputas elegibles fuera de la red se omiten, y el dinero que la Ley Sin Sorpresas ya contempla se queda sobre la mesa. ARBEXEC cierra esa brecha: la preparación es el producto.",
+    "wf.eyebrow": "Flujo de trabajo",
+    "wf.h2": "Del caos de las remesas a un paquete listo para presentar.",
+    "wf.lede": "Seis etapas, una sola línea. Cada caso avanza por el mismo camino protegido — y solo puede avanzar cuando la etapa anterior está completa.",
+    "wf.s1.k": "Etapa 1 · Admisión",
+    "wf.s1.h": "Cuatro vías de entrada",
+    "wf.s1.p": "Extracción conectada al EHR, archivos electrónicos 835/837, documentos PDF y papel — escaneado y leído localmente, en sus propias máquinas, sin enviarlo nunca fuera para escanear.",
+    "wf.s2.k": "Etapa 2 · Elegibilidad",
+    "wf.s2.h": "Un examen citado, cada reclamación",
+    "wf.s2.p": "Cada reclamación se examina regla por regla. Cada veredicto — elegible, no elegible o necesita revisión — lleva la regla y la cita que lo respalda. Un monto de pago calificado ausente se marca para revisión, nunca se estima.",
+    "wf.s3.k": "Etapa 3 · Negociación",
+    "wf.s3.h": "Negociación abierta, con seguimiento",
+    "wf.s3.p": "El período de negociación abierta de 30 días hábiles corre desde el pago inicial o la denegación, con el plazo siempre visible y el incumplimiento marcado el mismo día en que ocurre.",
+    "wf.s4.k": "Etapa 4 · Paquete",
+    "wf.s4.h": "Armado del paquete",
+    "wf.s4.p": "El paquete de presentación se arma como un documento de evidencia con un manifiesto verificado por hash — lo entregado puede probarse después, byte por byte.",
+    "wf.s5.k": "Etapa 5 · Entrega",
+    "wf.s5.h": "Entrega a la entidad certificada",
+    "wf.s5.p": "ARBEXEC prepara; una entidad IDR certificada presenta. La entrega es una etapa de primera clase, con seguimiento — no un adjunto de correo y una esperanza.",
+    "wf.s6.k": "Etapa 6 · Resultado",
+    "wf.s6.h": "Seguimiento de resultado y pago",
+    "wf.s6.p": "Las decisiones, los plazos de pago y las alertas de ejecución se siguen hasta el cierre. Un plazo incumplido sale a la superficie — nunca avanza en silencio.",
+    "why.eyebrow": "Por qué ARBEXEC",
+    "why.h2": "Por qué funciona",
+    "why.lede": "La preparación de IDR falla en lugares predecibles: se escogen los casos fáciles, los plazos se escapan en silencio, las cifras se adivinan. ARBEXEC está construido contra exactamente esos fallos.",
+    "why.c1.h": "Sin selección de favoritos",
+    "why.c1.p": "Cada reclamación que entra se examina, y cada caso elegible avanza. El motor no escoge ganadores — las reglas deciden, y el veredicto queda escrito con su cita.",
+    "why.c2.h": "Citado, no adivinado",
+    "why.c2.p": "Cada veredicto de elegibilidad lleva su ID de regla y su cita del CFR. Los montos facturados, pagados y de pago calificado salen de sus remesas — una cifra ausente se marca para revisión, nunca se inventa.",
+    "why.c3.h": "Los plazos son estructurales",
+    "why.c3.p": "Un calendario de días hábiles con feriados federales gobierna cada ventana — negociación abierta, inicio del IDR, período de enfriamiento. Los casos incumplidos y próximos al plazo aparecen primero, los incumplidos antes que todos.",
+    "why.c4.h": "Sus datos permanecen en su entorno",
+    "why.c4.p": "Los datos identificados de reclamaciones viven en el entorno propio del operador, cifrados en reposo. El escaneo y el OCR corren localmente. La aplicación ARBEXEC está detrás de una puerta de acceso — nunca es un sistema público.",
+    "why.strip.h": "Cifras verificadas por personas",
+    "why.strip.p": "La extracción propone; las personas disponen. Los montos facturados, pagados y de pago calificado los verifica un revisor humano antes de finalizar cualquier paquete — la máquina nunca tiene la última palabra sobre un número que va a una entidad presentadora.",
+    "pilot.eyebrow": "Piloto",
+    "pilot.h2": "En piloto. Construido para probar.",
+    "pilot.p": "ARBEXEC está en piloto con organizaciones proveedoras. La línea completa — admisión, elegibilidad, negociación abierta, paquete, entrega, seguimiento de resultados — está construida y probada de extremo a extremo. La admisión directa desde el EHR se habilita por organización durante la incorporación, junto con las vías electrónica, PDF y papel.",
+    "pilot.cta": "Preguntar por el piloto",
+    "founder.eyebrow": "IEC",
+    "founder.h2": "El equipo detrás de ARBEXEC.",
+    "founder.p": "ARBEXEC lo construye International Empire Consultants, Inc. (IEC) — el mismo equipo de MEDEXEC y CURAVIA. IEC construye sistemas operativos para el trabajo de salud que tiene que salir bien: citado, auditable y revisado por personas.",
+    "founder.cta": "Visitar IEC",
+    "faq.eyebrow": "Preguntas frecuentes",
+    "faq.h2": "Respuestas claras sobre ARBEXEC.",
+    "faq.q1": "¿ARBEXEC presenta nuestros casos?",
+    "faq.a1": "No. ARBEXEC prepara paquetes listos para presentar y sigue cada caso de extremo a extremo; la presentación la realiza una entidad IDR certificada. Esa separación es por diseño — quien prepara y quien presenta son partes distintas.",
+    "faq.q2": "¿Qué disputas cubre el proceso federal de IDR?",
+    "faq.a2": "Servicios de emergencia fuera de la red, servicios no urgentes de un proveedor fuera de la red en un centro dentro de la red, y servicios de ambulancia aérea, bajo 45 CFR 149.510. Cuando aplica una ley estatal especificada, rige el proceso estatal — el examen de ARBEXEC verifica eso primero.",
+    "faq.q3": "¿Se examinan todos nuestros casos, o solo los fuertes?",
+    "faq.a3": "Todos. ARBEXEC examina cada reclamación que recibe y hace avanzar cada caso elegible. Nunca se escogen favoritos, y un caso que necesita revisión se marca con el motivo — nunca se descarta en silencio.",
+    "faq.q4": "¿A dónde van los datos de nuestras reclamaciones?",
+    "faq.a4": "A ningún lugar indebido. Los datos identificados permanecen dentro de su propio entorno, el escaneo y el OCR corren localmente en sus máquinas, y el sistema operador de ARBEXEC está detrás de una puerta de acceso — nunca es un sitio público.",
+    "faq.q5": "¿Cómo podemos ver ARBEXEC?",
+    "faq.a5": "Firme el CNDA de IEC — un solo acuerdo cubre todos los productos de IEC — e IEC organiza una visita guiada. No hay demostración pública ni acceso de demostración.",
+    "nda.h2": "IEC firma un solo NDA universal.",
+    "nda.p": "Un solo CNDA de IEC cubre todos los productos de IEC, ARBEXEC incluido. Revíselo, fírmelo, e IEC organizará su visita guiada a ARBEXEC y una conversación de piloto para su organización.",
+    "nda.btn": "Revisar y firmar el CNDA de IEC",
+    "nda.alt": "¿Preguntas primero?",
+    "nda.alt.link": "Contactar a IEC",
+    "contact.eyebrow": "Contacto",
+    "contact.h2": "Hable con IEC.",
+    "contact.lede": "ARBEXEC se ofrece a hospitales y prácticas proveedoras. Cuéntenos su volumen de disputas y los sistemas donde viven sus reclamaciones, y volveremos con los próximos pasos.",
+    "contact.email.h": "Correo",
+    "contact.phone.h": "Teléfono",
+    "contact.web.h": "IEC",
+    "contact.web.link": "Página de contacto de IEC"
+  }
+};
+</script>
+<script src="site.js"></script>
+</body>
+</html>
