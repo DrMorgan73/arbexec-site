@@ -96,6 +96,11 @@ a { color: inherit; }
 .nav-brand { margin-right: auto; display: flex; align-items: center; gap: .6rem; }
 .nav-brand img { height: 34px; width: auto; display: block; }
 .nav-links { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+.nav-signin {
+  border: 2px solid var(--navy); border-radius: 999px; padding: .32rem .95rem;
+  font-weight: 600; color: var(--navy); white-space: nowrap;
+}
+.nav a.nav-signin:hover { background: var(--navy); color: #fff; }
 .lang-toggle { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .lang-toggle button {
   border: 0; background: transparent; padding: .28rem .7rem; cursor: pointer;

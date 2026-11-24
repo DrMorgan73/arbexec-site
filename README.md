@@ -29,26 +29,23 @@ its gate, or its domains.
 - Demo interest routes only through the central IEC CNDA
   (`https://iecincglobal.com/cnda.html`). There is no public demo and no
   demo login for ARBEXEC.
-- Honest capability copy: the four intake lanes and EHR-direct intake are
-  described as the operating model; the pilot section states EHR-direct
-  intake is enabled per organization during onboarding.
+- Honest capability copy: intake is described as the two real routes —
+  the FHIR R4 / SMART connection and manual upload — and the capture
+  layer as built. The pilot section states the FHIR connection is
+  enabled per organization during onboarding, completed through the
+  EHR vendor's registration process. No claim of a live vendor
+  integration, certification, win rate, or filed-case volume.
+- The nav and footer carry a **Sign In** button to the application
+  portal (`https://app.arbexec.com/portal/signin`).
 
-## Open items / decisions
+## Resolved / status
 
-1. **CNDA origin tag:** the central CNDA validates `?origin=` against a
-   fixed list (`medexec, curavia, iec, insnap, inssnapp, iec-docs,
-   direct`) in `medexec-app/src/lib/nda.ts`. `arbexec` is not on it yet,
-   so this site links the CNDA without an origin tag (signings record as
-   `direct`). Adding `arbexec` is a one-line change in medexec-app plus
-   a banner entry on the CNDA page — proposed, not done here.
+1. **CNDA origin tag:** resolved — the site links the central CNDA
+   directly with `?origin=arbexec` (commit f546565, per the Nov 22,
+   2026 all-assets ruling).
 2. **Logo:** `assets/logo.webp` is the MEDEXEC-matched "scales" concept
    from the Nov 22, 2026 concept round. DrMorgan's final pick between
    the concepts is still pending; the asset swaps in one file when he
    picks.
-3. **Hosting (proposal):** the gated application currently answers on
-   arbexec.com / www.arbexec.com. Recommended end state: this public
-   site takes the arbexec.com apex, and the application moves to
-   app.arbexec.com (domain re-point only — the gate code is unchanged
-   and stays closed). Until DrMorgan rules, this site is staged on its
-   own Vercel project (`arbexec-site`) and the IEC website's ARBEXEC
-   entry is held so no public link points at a temporary address.
+3. **Hosting:** this site serves at the arbexec.com apex; the gated
+   application lives at app.arbexec.com on its own deployment.

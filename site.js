@@ -8,6 +8,8 @@
       "skip": "Saltar al contenido",
       "strip": "<strong>En piloto.</strong> ARBEXEC está incorporando ahora a un número reducido de organizaciones proveedoras.",
       "nav.workflow": "Flujo de trabajo",
+      "nav.capture": "Captura",
+      "nav.signin": "Iniciar sesión",
       "nav.why": "Por qué ARBEXEC",
       "nav.pilot": "Piloto",
       "nav.rules": "El reglamento",

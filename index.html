@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARBEXEC — The No Surprises Act IDR Packet Engine</title>
-<meta name="description" content="ARBEXEC prepares federal Independent Dispute Resolution (IDR) cases under the No Surprises Act for hospitals and practices: EHR-connected intake, a cited eligibility screen for every case, filing-ready packets, and handoff to a certified IDR entity.">
+<meta name="description" content="ARBEXEC prepares federal Independent Dispute Resolution (IDR) cases under the No Surprises Act for hospitals and practices: FHIR-connected and manual-upload intake, a cited eligibility screen for every case, a capture layer that sweeps whole remittance files for missed disputes, filing-ready packets, and handoff to a certified IDR entity.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,12 +17,14 @@
   <a class="nav-brand" href="index.html" aria-label="ARBEXEC home"><img src="assets/logo.webp" alt="ARBEXEC"></a>
   <div class="nav-links">
     <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
+    <a href="#capture" data-i18n="nav.capture">Capture</a>
     <a href="#why" data-i18n="nav.why">Why ARBEXEC</a>
     <a href="#pilot" data-i18n="nav.pilot">Pilot</a>
     <a href="rules.html" data-i18n="nav.rules">The rulebook</a>
     <a href="for-providers.html" data-i18n="nav.providers">For providers</a>
     <a href="#nda" data-i18n="nav.demo">Demo</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
+    <a class="nav-signin" href="https://app.arbexec.com/portal/signin" data-i18n="nav.signin">Sign In</a>
     <span class="lang-toggle" role="group" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">EN</button>
       <button type="button" data-lang="es" aria-pressed="false">ES</button>
@@ -57,7 +59,7 @@
     <dl>
       <div class="row">
         <dt data-i18n="panel.intake">Intake</dt>
-        <dd data-i18n="panel.intake.v">Four lanes in — EHR pull · 835/837 · PDF · paper</dd>
+        <dd data-i18n="panel.intake.v">FHIR pull · 837/835 import · manual upload · PDF &amp; scans</dd>
       </div>
       <div class="row">
         <dt data-i18n="panel.elig">Eligibility</dt>
@@ -97,13 +99,13 @@
     <div class="grid cols-3">
       <div class="card">
         <span class="step" data-i18n="wf.s1.k">Step 1 · Intake</span>
-        <h3 data-i18n="wf.s1.h">Four lanes in</h3>
-        <p data-i18n="wf.s1.p">EHR-connected pull, electronic 835/837 files, PDF documents, and paper — scanned and read locally, on your own machines, never sent out for scanning.</p>
+        <h3 data-i18n="wf.s1.h">Connected, or uploaded</h3>
+        <p data-i18n="wf.s1.p">Two ways in. Connect your EHR: ARBEXEC pulls patient, encounter, coverage, claim, and payment context over FHIR R4 with SMART authorization, and cross-checks every claim against it. Or upload manually — 837 and 835 files, CSV, PDF remittances, and scanned paper, read locally by OCR on your own machines and fed into the same gated pipeline.</p>
       </div>
       <div class="card">
         <span class="step" data-i18n="wf.s2.k">Step 2 · Eligibility</span>
         <h3 data-i18n="wf.s2.h">A cited screen, every claim</h3>
-        <p><span data-i18n="wf.s2.p">Every claim is screened rule by rule. Each verdict — eligible, ineligible, or needs review — carries the rule and the citation behind it. A missing qualifying payment amount is flagged for review, never estimated.</span> <span class="cite">45 CFR 149.510</span></p>
+        <p><span data-i18n="wf.s2.p">Every claim is screened through eleven rule blocks. Each verdict — eligible, ineligible, or needs review — carries the rule and the citation behind it. A missing qualifying payment amount is flagged for review, never estimated. Workers' compensation, personal injury, Medicare, and Medicaid never enter the pipeline.</span> <span class="cite">45 CFR 149.510</span></p>
       </div>
       <div class="card">
         <span class="step" data-i18n="wf.s3.k">Step 3 · Negotiation</span>
@@ -129,6 +131,38 @@
   </div>
 </section>
 
+<section class="wrap section" id="capture">
+  <p class="eyebrow" data-i18n="cap.eyebrow">Capture</p>
+  <h2 data-i18n="cap.h2">The hunting layer: find every dispute you are owed.</h2>
+  <p class="lede" data-i18n="cap.lede">Screening what you are handed is only half the work. The capture layer sweeps your remittances themselves — whole files at a time — and surfaces the disputes manual review walks past.</p>
+  <div class="grid cols-3">
+    <div class="card">
+      <h3 data-i18n="cap.c1.h">Cohort sweep</h3>
+      <p data-i18n="cap.c1.p">Drop in a whole 835 remittance file — or a month of them. Every claim in the batch is screened through the same cited eligibility engine, and every captured dispute lands on the cohort board with its route: federal IDR, state process, or excluded, with the reason recorded.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="cap.c2.h">Underpayment detection</h3>
+      <p data-i18n="cap.c2.p">Paid below the payer's own stated QPA, paid at zero, or paid at a fraction of the billed amount — each pattern is flagged as a dispute candidate, with the arithmetic shown on the signal.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="cap.c3.h">Downcoding &amp; bundling</h3>
+      <p data-i18n="cap.c3.p">When a payer quietly re-codes a line to a lower-paying code, or folds a service into another line's payment, the remittance itself says so. ARBEXEC reads those signals line by line and flags them as disputes in their own right.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="cap.c4.h">Denial-code classification</h3>
+      <p data-i18n="cap.c4.p">Every adjustment and remark code (CARC/RARC) on the remittance is classified — payment-dispute candidate, bundling candidate, clinical denial, administrative — with the reason written down. A code the system does not know is never guessed at; it goes to review.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="cap.c5.h">Deadline radar</h3>
+      <p data-i18n="cap.c5.p">Every open case is aged against its windows — negotiation ending, initiation deadline, filer acknowledgment, payment window — and ordered by urgency, including cases still in intake that no board shows yet. Nothing is found after its window has closed.</p>
+    </div>
+    <div class="card">
+      <h3 data-i18n="cap.c6.h">A wider net, honestly drawn</h3>
+      <p><span data-i18n="cap.c6.p">Air ambulance disputes screen as the federal category they are. Ground ambulance and fully-insured disputes in specified-state-law states are routed to the state process and captured — not discarded. Workers' compensation, personal injury, Medicare, and Medicaid stay excluded under every configuration.</span> <span class="cite">45 CFR 149.510(a)(1)</span></p>
+    </div>
+  </div>
+</section>
+
 <section class="wrap section" id="why">
   <p class="eyebrow" data-i18n="why.eyebrow">Why ARBEXEC</p>
   <h2 data-i18n="why.h2">Why this works</h2>
@@ -148,7 +182,7 @@
     </div>
     <div class="card">
       <h3 data-i18n="why.c4.h">Your data stays in your environment</h3>
-      <p data-i18n="why.c4.p">Identified claims data lives in the operator's own environment, encrypted at rest. Scanning and OCR run locally. The ARBEXEC application sits behind an access gate — it is never a public system.</p>
+      <p data-i18n="why.c4.p">Identified claims data lives in the operator's own environment, and processing is local-only: scanning and OCR run on the operator's machines, and no claim is sent to any outside service. The application itself is access-gated — unique individual accounts, role-based permissions, passwords stored only as hashes, and TLS on every connection.</p>
     </div>
   </div>
   <div class="wide-strip">
@@ -160,7 +194,7 @@
 <section class="wrap section" id="pilot">
   <p class="eyebrow" data-i18n="pilot.eyebrow">Pilot</p>
   <h2 data-i18n="pilot.h2">In pilot. Built for proof.</h2>
-  <p class="lede" data-i18n="pilot.p">ARBEXEC is in pilot with provider organizations. The full pipeline — intake, eligibility, open negotiation, packet, handoff, outcome tracking — is built and tested end to end. EHR-direct intake is enabled per organization during onboarding, alongside the electronic, PDF, and paper lanes.</p>
+  <p class="lede" data-i18n="pilot.p">ARBEXEC is in pilot with provider organizations. The full pipeline — intake, eligibility, open negotiation, packet, handoff, outcome tracking — plus the capture layer is built and tested end to end. Manual upload works from day one; the FHIR connection to your EHR is enabled per organization during onboarding, completed through your EHR vendor's registration process.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#contact" data-i18n="pilot.cta">Ask about the pilot</a>
   </div>
@@ -184,7 +218,7 @@
   </details>
   <details>
     <summary data-i18n="faq.q2">Which disputes does the federal IDR process cover?</summary>
-    <p data-i18n="faq.a2">Out-of-network emergency services, non-emergency services by an out-of-network provider at an in-network facility, and air ambulance services, under 45 CFR 149.510. Where a specified state law applies, the state process governs instead — the ARBEXEC screen checks that first.</p>
+    <p data-i18n="faq.a2">Out-of-network emergency services, non-emergency services by an out-of-network provider at an in-network facility, and air ambulance services, under 45 CFR 149.510. Where a specified state law applies, the state process governs instead — the ARBEXEC screen checks that first, and routes ground-ambulance and fully-insured state-law disputes to the state process rather than discarding them.</p>
   </details>
   <details>
     <summary data-i18n="faq.q3">Do all of our cases get screened, or only the strong ones?</summary>
@@ -242,6 +276,7 @@
       <a href="index.html" data-i18n="footer.home">Home</a>
       <a href="rules.html" data-i18n="nav.rules">The rulebook</a>
       <a href="for-providers.html" data-i18n="nav.providers">For providers</a>
+      <a href="https://app.arbexec.com/portal/signin" data-i18n="nav.signin">Sign In</a>
       <a href="https://iecincglobal.com">IEC</a>
       <a href="https://getmedexec.com">MEDEXEC</a>
       <a href="https://www.getcuravia.com">CURAVIA</a>
@@ -263,7 +298,7 @@ window.PAGE_I18N = {
     "panel.t": "Vista del caso",
     "panel.badge": "Ilustrativo",
     "panel.intake": "Admisión",
-    "panel.intake.v": "Cuatro vías de entrada — EHR · 835/837 · PDF · papel",
+    "panel.intake.v": "Extracción FHIR · importación 837/835 · carga manual · PDF y escaneos",
     "panel.elig": "Elegibilidad",
     "panel.elig.v": "ELEGIBLE",
     "panel.elig.r": "— Regla R4, disputa de red",
@@ -282,11 +317,11 @@ window.PAGE_I18N = {
     "wf.h2": "Del caos de las remesas a un paquete listo para presentar.",
     "wf.lede": "Seis etapas, una sola línea. Cada caso avanza por el mismo camino protegido — y solo puede avanzar cuando la etapa anterior está completa.",
     "wf.s1.k": "Etapa 1 · Admisión",
-    "wf.s1.h": "Cuatro vías de entrada",
-    "wf.s1.p": "Extracción conectada al EHR, archivos electrónicos 835/837, documentos PDF y papel — escaneado y leído localmente, en sus propias máquinas, sin enviarlo nunca fuera para escanear.",
+    "wf.s1.h": "Conectado, o cargado",
+    "wf.s1.p": "Dos vías de entrada. Conecte su EHR: ARBEXEC extrae el contexto de paciente, encuentro, cobertura, reclamación y pago vía FHIR R4 con autorización SMART, y contrasta cada reclamación contra él. O cargue manualmente — archivos 837 y 835, CSV, remesas en PDF y papel escaneado, leídos localmente por OCR en sus propias máquinas y alimentados a la misma línea protegida.",
     "wf.s2.k": "Etapa 2 · Elegibilidad",
     "wf.s2.h": "Un examen citado, cada reclamación",
-    "wf.s2.p": "Cada reclamación se examina regla por regla. Cada veredicto — elegible, no elegible o necesita revisión — lleva la regla y la cita que lo respalda. Un monto de pago calificado ausente se marca para revisión, nunca se estima.",
+    "wf.s2.p": "Cada reclamación se examina a través de once bloques de reglas. Cada veredicto — elegible, no elegible o necesita revisión — lleva la regla y la cita que lo respalda. Un monto de pago calificado ausente se marca para revisión, nunca se estima. La compensación laboral, las lesiones personales, Medicare y Medicaid nunca entran en la línea.",
     "wf.s3.k": "Etapa 3 · Negociación",
     "wf.s3.h": "Negociación abierta, con seguimiento",
     "wf.s3.p": "El período de negociación abierta de 30 días hábiles corre desde el pago inicial o la denegación, con el plazo siempre visible y el incumplimiento marcado el mismo día en que ocurre.",
@@ -299,6 +334,21 @@ window.PAGE_I18N = {
     "wf.s6.k": "Etapa 6 · Resultado",
     "wf.s6.h": "Seguimiento de resultado y pago",
     "wf.s6.p": "Las decisiones, los plazos de pago y las alertas de ejecución se siguen hasta el cierre. Un plazo incumplido sale a la superficie — nunca avanza en silencio.",
+    "cap.eyebrow": "Captura",
+    "cap.h2": "La capa de caza: encuentre cada disputa que le deben.",
+    "cap.lede": "Examinar lo que le entregan es solo la mitad del trabajo. La capa de captura barre sus propias remesas — archivos completos a la vez — y saca a la superficie las disputas que la revisión manual pasa por alto.",
+    "cap.c1.h": "Barrido de cohorte",
+    "cap.c1.p": "Deje un archivo completo de remesas 835 — o un mes de ellos. Cada reclamación del lote se examina con el mismo motor de elegibilidad citado, y cada disputa capturada llega al tablero de cohorte con su ruta: IDR federal, proceso estatal o excluida, con el motivo registrado.",
+    "cap.c2.h": "Detección de pago insuficiente",
+    "cap.c2.p": "Pagado por debajo del QPA que el propio pagador declaró, pagado en cero, o pagado a una fracción del monto facturado — cada patrón se marca como candidato a disputa, con la aritmética mostrada en la señal.",
+    "cap.c3.h": "Recodificación y agrupación",
+    "cap.c3.p": "Cuando un pagador recodifica en silencio una línea a un código de menor pago, o pliega un servicio en el pago de otra línea, la propia remesa lo dice. ARBEXEC lee esas señales línea por línea y las marca como disputas por derecho propio.",
+    "cap.c4.h": "Clasificación de códigos de denegación",
+    "cap.c4.p": "Cada código de ajuste y observación (CARC/RARC) de la remesa se clasifica — candidato a disputa de pago, candidato a agrupación, denegación clínica, administrativo — con el motivo por escrito. Un código que el sistema no conoce nunca se adivina; va a revisión.",
+    "cap.c5.h": "Radar de plazos",
+    "cap.c5.p": "Cada caso abierto se envejece contra sus ventanas — fin de la negociación, plazo de inicio, acuse de la entidad presentadora, ventana de pago — y se ordena por urgencia, incluidos los casos aún en admisión que ningún tablero muestra todavía. Nada se encuentra después de que su ventana se cerró.",
+    "cap.c6.h": "Una red más amplia, trazada con honestidad",
+    "cap.c6.p": "Las disputas de ambulancia aérea se examinan como la categoría federal que son. La ambulancia terrestre y las disputas de planes totalmente asegurados en estados con ley estatal especificada se enrutan al proceso estatal y se capturan — no se descartan. La compensación laboral, las lesiones personales, Medicare y Medicaid permanecen excluidos bajo toda configuración.",
     "why.eyebrow": "Por qué ARBEXEC",
     "why.h2": "Por qué funciona",
     "why.lede": "La preparación de IDR falla en lugares predecibles: se escogen los casos fáciles, los plazos se escapan en silencio, las cifras se adivinan. ARBEXEC está construido contra exactamente esos fallos.",
@@ -309,12 +359,12 @@ window.PAGE_I18N = {
     "why.c3.h": "Los plazos son estructurales",
     "why.c3.p": "Un calendario de días hábiles con feriados federales gobierna cada ventana — negociación abierta, inicio del IDR, período de enfriamiento. Los casos incumplidos y próximos al plazo aparecen primero, los incumplidos antes que todos.",
     "why.c4.h": "Sus datos permanecen en su entorno",
-    "why.c4.p": "Los datos identificados de reclamaciones viven en el entorno propio del operador, cifrados en reposo. El escaneo y el OCR corren localmente. La aplicación ARBEXEC está detrás de una puerta de acceso — nunca es un sistema público.",
+    "why.c4.p": "Los datos identificados de reclamaciones viven en el entorno propio del operador, y el procesamiento es solo local: el escaneo y el OCR corren en las máquinas del operador, y ninguna reclamación se envía a un servicio externo. La aplicación misma está protegida por acceso — cuentas individuales únicas, permisos por rol, contraseñas guardadas solo como hashes, y TLS en cada conexión.",
     "why.strip.h": "Cifras verificadas por personas",
     "why.strip.p": "La extracción propone; las personas disponen. Los montos facturados, pagados y de pago calificado los verifica un revisor humano antes de finalizar cualquier paquete — la máquina nunca tiene la última palabra sobre un número que va a una entidad presentadora.",
     "pilot.eyebrow": "Piloto",
     "pilot.h2": "En piloto. Construido para probar.",
-    "pilot.p": "ARBEXEC está en piloto con organizaciones proveedoras. La línea completa — admisión, elegibilidad, negociación abierta, paquete, entrega, seguimiento de resultados — está construida y probada de extremo a extremo. La admisión directa desde el EHR se habilita por organización durante la incorporación, junto con las vías electrónica, PDF y papel.",
+    "pilot.p": "ARBEXEC está en piloto con organizaciones proveedoras. La línea completa — admisión, elegibilidad, negociación abierta, paquete, entrega, seguimiento de resultados — más la capa de captura está construida y probada de extremo a extremo. La carga manual funciona desde el primer día; la conexión FHIR con su EHR se habilita por organización durante la incorporación, completada a través del proceso de registro de su proveedor de EHR.",
     "pilot.cta": "Preguntar por el piloto",
     "founder.eyebrow": "IEC",
     "founder.h2": "El equipo detrás de ARBEXEC.",
@@ -325,7 +375,7 @@ window.PAGE_I18N = {
     "faq.q1": "¿ARBEXEC presenta nuestros casos?",
     "faq.a1": "No. ARBEXEC prepara paquetes listos para presentar y sigue cada caso de extremo a extremo; la presentación la realiza una entidad IDR certificada. Esa separación es por diseño — quien prepara y quien presenta son partes distintas.",
     "faq.q2": "¿Qué disputas cubre el proceso federal de IDR?",
-    "faq.a2": "Servicios de emergencia fuera de la red, servicios no urgentes de un proveedor fuera de la red en un centro dentro de la red, y servicios de ambulancia aérea, bajo 45 CFR 149.510. Cuando aplica una ley estatal especificada, rige el proceso estatal — el examen de ARBEXEC verifica eso primero.",
+    "faq.a2": "Servicios de emergencia fuera de la red, servicios no urgentes de un proveedor fuera de la red en un centro dentro de la red, y servicios de ambulancia aérea, bajo 45 CFR 149.510. Cuando aplica una ley estatal especificada, rige el proceso estatal — el examen de ARBEXEC verifica eso primero, y enruta las disputas de ambulancia terrestre y de ley estatal de planes totalmente asegurados al proceso estatal en lugar de descartarlas.",
     "faq.q3": "¿Se examinan todos nuestros casos, o solo los fuertes?",
     "faq.a3": "Todos. ARBEXEC examina cada reclamación que recibe y hace avanzar cada caso elegible. Nunca se escogen favoritos, y un caso que necesita revisión se marca con el motivo — nunca se descarta en silencio.",
     "faq.q4": "¿A dónde van los datos de nuestras reclamaciones?",
