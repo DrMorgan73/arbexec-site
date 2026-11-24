@@ -47,7 +47,7 @@
     <ul class="chips">
       <li data-i18n="chip.1">Every eligible case — no cherry-picking</li>
       <li data-i18n="chip.2">Every verdict cites its rule</li>
-      <li data-i18n="chip.3">Your data stays in your environment</li>
+      <li data-i18n="chip.3">Your data stays behind an access gate</li>
     </ul>
   </div>
 
@@ -100,7 +100,7 @@
       <div class="card">
         <span class="step" data-i18n="wf.s1.k">Step 1 · Intake</span>
         <h3 data-i18n="wf.s1.h">Connected, or uploaded</h3>
-        <p data-i18n="wf.s1.p">Two ways in. Connect your EHR: ARBEXEC pulls patient, encounter, coverage, claim, and payment context over FHIR R4 with SMART authorization, and cross-checks every claim against it. Or upload manually — 837 and 835 files, CSV, PDF remittances, and scanned paper, read locally by OCR on your own machines and fed into the same gated pipeline.</p>
+        <p data-i18n="wf.s1.p">Two ways in. Connect your EHR: ARBEXEC pulls patient, encounter, coverage, claim, and payment context over FHIR R4 with SMART authorization, and cross-checks every claim against it. Or upload manually — 837 and 835 files, CSV, PDF remittances, and scanned paper, read by local OCR and fed into the same gated pipeline.</p>
       </div>
       <div class="card">
         <span class="step" data-i18n="wf.s2.k">Step 2 · Eligibility</span>
@@ -181,8 +181,8 @@
       <p data-i18n="why.c3.p">A federal-holiday-aware business-day calendar drives every window — open negotiation, IDR initiation, cooling-off. Breached and near-deadline cases surface first, breached first.</p>
     </div>
     <div class="card">
-      <h3 data-i18n="why.c4.h">Your data stays in your environment</h3>
-      <p data-i18n="why.c4.p">Identified claims data lives in the operator's own environment, and processing is local-only: scanning and OCR run on the operator's machines, and no claim is sent to any outside service. The application itself is access-gated — unique individual accounts, role-based permissions, passwords stored only as hashes, and TLS on every connection.</p>
+      <h3 data-i18n="why.c4.h">Your data stays behind the gate</h3>
+      <p data-i18n="why.c4.p">Case data is held in IEC's dedicated, access-gated database — never on a public site, never in a shared pool. Document scanning and OCR run locally, and no third-party scanning service ever touches a claim. The application itself is access-gated — unique individual accounts, role-based permissions, passwords stored only as hashes, and TLS on every connection.</p>
     </div>
   </div>
   <div class="wide-strip">
@@ -226,7 +226,7 @@
   </details>
   <details>
     <summary data-i18n="faq.q4">Where does our claims data go?</summary>
-    <p data-i18n="faq.a4">Nowhere it shouldn't. Identified claims data stays inside your own environment, scanning and OCR run locally on your machines, and the ARBEXEC operator system sits behind an access gate — it is never a public site.</p>
+    <p data-i18n="faq.a4">Nowhere it shouldn't. Case data is held in IEC's dedicated, access-gated database; document scanning and OCR run locally, and no third-party scanning service is used. The ARBEXEC operator system sits behind an access gate — it is never a public site.</p>
   </details>
   <details>
     <summary data-i18n="faq.q5">How do we see ARBEXEC?</summary>
@@ -294,7 +294,7 @@ window.PAGE_I18N = {
     "hero.sub": "ARBEXEC prepara casos federales de IDR para hospitales y prácticas con disputas de pago fuera de la red: recibe sus reclamaciones, examina cada una contra las reglas federales, arma el paquete de presentación y lo entrega a una entidad IDR certificada para su presentación.",
     "chip.1": "Cada caso elegible — sin selección de favoritos",
     "chip.2": "Cada veredicto cita su regla",
-    "chip.3": "Sus datos permanecen en su entorno",
+    "chip.3": "Sus datos permanecen tras una puerta de acceso",
     "panel.t": "Vista del caso",
     "panel.badge": "Ilustrativo",
     "panel.intake": "Admisión",
@@ -318,7 +318,7 @@ window.PAGE_I18N = {
     "wf.lede": "Seis etapas, una sola línea. Cada caso avanza por el mismo camino protegido — y solo puede avanzar cuando la etapa anterior está completa.",
     "wf.s1.k": "Etapa 1 · Admisión",
     "wf.s1.h": "Conectado, o cargado",
-    "wf.s1.p": "Dos vías de entrada. Conecte su EHR: ARBEXEC extrae el contexto de paciente, encuentro, cobertura, reclamación y pago vía FHIR R4 con autorización SMART, y contrasta cada reclamación contra él. O cargue manualmente — archivos 837 y 835, CSV, remesas en PDF y papel escaneado, leídos localmente por OCR en sus propias máquinas y alimentados a la misma línea protegida.",
+    "wf.s1.p": "Dos vías de entrada. Conecte su EHR: ARBEXEC extrae el contexto de paciente, encuentro, cobertura, reclamación y pago vía FHIR R4 con autorización SMART, y contrasta cada reclamación contra él. O cargue manualmente — archivos 837 y 835, CSV, remesas en PDF y papel escaneado, leídos por OCR local y alimentados a la misma línea protegida.",
     "wf.s2.k": "Etapa 2 · Elegibilidad",
     "wf.s2.h": "Un examen citado, cada reclamación",
     "wf.s2.p": "Cada reclamación se examina a través de once bloques de reglas. Cada veredicto — elegible, no elegible o necesita revisión — lleva la regla y la cita que lo respalda. Un monto de pago calificado ausente se marca para revisión, nunca se estima. La compensación laboral, las lesiones personales, Medicare y Medicaid nunca entran en la línea.",
@@ -358,8 +358,8 @@ window.PAGE_I18N = {
     "why.c2.p": "Cada veredicto de elegibilidad lleva su ID de regla y su cita del CFR. Los montos facturados, pagados y de pago calificado salen de sus remesas — una cifra ausente se marca para revisión, nunca se inventa.",
     "why.c3.h": "Los plazos son estructurales",
     "why.c3.p": "Un calendario de días hábiles con feriados federales gobierna cada ventana — negociación abierta, inicio del IDR, período de enfriamiento. Los casos incumplidos y próximos al plazo aparecen primero, los incumplidos antes que todos.",
-    "why.c4.h": "Sus datos permanecen en su entorno",
-    "why.c4.p": "Los datos identificados de reclamaciones viven en el entorno propio del operador, y el procesamiento es solo local: el escaneo y el OCR corren en las máquinas del operador, y ninguna reclamación se envía a un servicio externo. La aplicación misma está protegida por acceso — cuentas individuales únicas, permisos por rol, contraseñas guardadas solo como hashes, y TLS en cada conexión.",
+    "why.c4.h": "Sus datos permanecen tras la puerta de acceso",
+    "why.c4.p": "Los datos de caso se guardan en la base de datos dedicada de IEC, protegida por acceso — nunca en un sitio público, nunca en un repositorio compartido. El escaneo de documentos y el OCR corren localmente, y ningún servicio de escaneo de terceros toca jamás una reclamación. La aplicación misma está protegida por acceso — cuentas individuales únicas, permisos por rol, contraseñas guardadas solo como hashes, y TLS en cada conexión.",
     "why.strip.h": "Cifras verificadas por personas",
     "why.strip.p": "La extracción propone; las personas disponen. Los montos facturados, pagados y de pago calificado los verifica un revisor humano antes de finalizar cualquier paquete — la máquina nunca tiene la última palabra sobre un número que va a una entidad presentadora.",
     "pilot.eyebrow": "Piloto",
@@ -379,7 +379,7 @@ window.PAGE_I18N = {
     "faq.q3": "¿Se examinan todos nuestros casos, o solo los fuertes?",
     "faq.a3": "Todos. ARBEXEC examina cada reclamación que recibe y hace avanzar cada caso elegible. Nunca se escogen favoritos, y un caso que necesita revisión se marca con el motivo — nunca se descarta en silencio.",
     "faq.q4": "¿A dónde van los datos de nuestras reclamaciones?",
-    "faq.a4": "A ningún lugar indebido. Los datos identificados permanecen dentro de su propio entorno, el escaneo y el OCR corren localmente en sus máquinas, y el sistema operador de ARBEXEC está detrás de una puerta de acceso — nunca es un sitio público.",
+    "faq.a4": "A ningún lugar indebido. Los datos de caso se guardan en la base de datos dedicada de IEC, protegida por acceso; el escaneo de documentos y el OCR corren localmente, y no se usa ningún servicio de escaneo de terceros. El sistema operador de ARBEXEC está detrás de una puerta de acceso — nunca es un sitio público.",
     "faq.q5": "¿Cómo podemos ver ARBEXEC?",
     "faq.a5": "Firme el CNDA de IEC — un solo acuerdo cubre todos los productos de IEC — e IEC organiza una visita guiada. No hay demostración pública ni acceso de demostración.",
     "nda.h2": "IEC firma un solo NDA universal.",
